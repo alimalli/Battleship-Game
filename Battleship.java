@@ -137,8 +137,15 @@ public class Battleship {
             //prompt user for guess
             System.out.print("Enter your guess: ");
             
-            //store user guess (assumes the user enters a properly formatted guess)
+            //store user guess
             String userGuess = userInput.next();
+
+            //validate user input
+            while (userGuess.length() > 3 || (userGuess.length() == 3 && (userGuess.charAt(0) < 'A' || userGuess.charAt(0) > 'J' || userGuess.charAt(1) != '1' || userGuess.charAt(2) != '0')) || (userGuess.length() == 2 && (userGuess.charAt(0) < 'A' || userGuess.charAt(0) > 'J' || userGuess.charAt(1) < '1' || userGuess.charAt(1) > '9'))) {
+                //Inform user of incorrect guess format and prompt user for another guess
+                System.out.print("Incorrect guess format. Enter your guess: ");
+                userGuess = userInput.next();
+            }
             System.out.println();
 
             //checks guess against current board
